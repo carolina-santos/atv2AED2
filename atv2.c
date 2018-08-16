@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define TAM 10
+#define TAM 100
 
 
 void imprimeVetor(int vet[]){
@@ -62,8 +62,9 @@ void quicksort(int vet[], int direita, int esquerda){
     imprimeVetor(vet);
 }
 
-void heapsort(int vet[]) {
+void heapSort(int vet[]){
    int i=TAM/2,pai,filho, aux,n=TAM;
+
    while(n!=0){
       if (i > 0){
           i--;
@@ -89,26 +90,27 @@ void heapsort(int vet[]) {
       }
       vet[pai] = aux;
    }
-   imprimeVetor(vet);
+    imprimeVetor(vet);
 }
 
 int main (){
-    clock_t tempo;
+   
     int vet [TAM];
     int i;
+    srand((unsigned)time(NULL));
+    clock_t tempo;
 
     for (i=0; i<TAM; i++){
-        //vet[i] = (rand()%100);
+        //vet[i] = (rand()%TAM);
         vet[i] = i;
     }
 
-
-    shellsort(vet);
-   // quicksort(vet, TAM-1,0);
-   // heapsort(vet);
+    //shellsort(vet);
+    //quicksort(vet, TAM-1,0);
+    heapSort(vet);
     
-    
-    printf("\nTempo:%f \n",(clock() - tempo) / (double)CLOCKS_PER_SEC);
-    
+    printf("\n Tempo:%f",(clock() - tempo) / (double)CLOCKS_PER_SEC);    
     return 0;
 }
+
+
